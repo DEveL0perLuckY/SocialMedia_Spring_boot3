@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{comment.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{comment.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/Admin/comments/add}" class="btn btn-primary ms-2">[[#{comment.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${comments.empty}">[[#{comment.list.empty}]]</div>
+            <div th:if="${!comments.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{comment.commentId.label}]]</th>
+                            <th scope="col">[[#{comment.createdAt.label}]]</th>
+                            <th scope="col">[[#{comment.user.label}]]</th>
+                            <th scope="col">[[#{comment.post.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="comment : ${comments}">
+                            <td>[[${comment.commentId}]]</td>
+                            <td>[[${comment.createdAt}]]</td>
+                            <td>[[${comment.user}]]</td>
+                            <td>[[${comment.post}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/Admin/comments/edit/{commentId}(commentId=${comment.commentId})}" class="btn btn-sm btn-secondary">[[#{comment.list.edit}]]</a>
+                                    <form th:action="@{/Admin/comments/delete/{commentId}(commentId=${comment.commentId})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{comment.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{likee.list.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{likee.list.headline}]]</h1>
+                <div>
+                    <a th:href="@{/Admin/likes/add}" class="btn btn-primary ms-2">[[#{likee.list.createNew}]]</a>
+                </div>
+            </div>
+            <div th:if="${likees.empty}">[[#{likee.list.empty}]]</div>
+            <div th:if="${!likees.empty}" class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">[[#{likee.likeId.label}]]</th>
+                            <th scope="col">[[#{likee.createdAt.label}]]</th>
+                            <th scope="col">[[#{likee.user.label}]]</th>
+                            <th scope="col">[[#{likee.post.label}]]</th>
+                            <th><!-- --></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="likee : ${likees}">
+                            <td>[[${likee.likeId}]]</td>
+                            <td>[[${likee.createdAt}]]</td>
+                            <td>[[${likee.user}]]</td>
+                            <td>[[${likee.post}]]</td>
+                            <td>
+                                <div class="float-end text-nowrap">
+                                    <a th:href="@{/Admin/likes/edit/{likeId}(likeId=${likee.likeId})}" class="btn btn-sm btn-secondary">[[#{likee.list.edit}]]</a>
+                                    <form th:action="@{/Admin/likes/delete/{likeId}(likeId=${likee.likeId})}"
+                                            th:data-confirm-message="#{delete.confirm}" method="post" class="js-submit-confirm d-inline">
+                                        <button type="submit" class="btn btn-sm btn-secondary">[[#{likee.list.delete}]]</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

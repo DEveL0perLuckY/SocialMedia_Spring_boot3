@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <style>
+            .jumbotron {
+                background-color: #ffffff;
+            }
+
+            .feature-box {
+                border: 1px solid #d2d2d2;
+                border-radius: 10px;
+                padding: 20px;
+                margin-top: 20px;
+            }
+
+            .signup-btn {
+                background-color: #28a745;
+                color: #ffffff;
+                border: none;
+            }
+
+            .signup-btn:hover {
+                background-color: #218838;
+            }
+
+            .login-btn {
+                background-color: #007bff;
+                color: #ffffff;
+                border: none;
+            }
+
+            .login-btn:hover {
+                background-color: #0056b3;
+            }
+        </style>
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Welcome to Decentralized Social Network</h1>
+            <p class="lead">Connect with friends, share updates, and explore new possibilities.</p>
+            <hr class="my-4">
+            <p>Join our community today!</p>
+            <a class="btn btn-outline-dark btn-lg" th:href="@{/reg}" role="button">Sign Up</a>
+            <a class="btn btn-outline-primary btn-lg" th:href="@{/login}" role="button">Log In</a>
+
+
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <h2>Discover</h2>
+                        <p>Explore a world of possibilities and discover new connections.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <h2>Connect</h2>
+                        <p>Connect with friends, family, and colleagues to stay in touch.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <h2>Share</h2>
+                        <p>Share Your updates, photos, and experiences with Decentralized network.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

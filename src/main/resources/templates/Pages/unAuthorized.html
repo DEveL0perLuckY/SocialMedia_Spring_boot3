@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+
+<head>
+    <title>Unauthorized-Access</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <style>
+            .unauthorized-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+
+            .unauthorized-card {
+                max-width: 400px;
+                text-align: center;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .btn-home {
+                background-color: #007bff;
+                color: #ffffff;
+            }
+        </style>
+        <div class="unauthorized-container">
+            <div class="unauthorized-card">
+                <h2>Unauthorized Access</h2>
+                <h3>Login Required </h3>
+                <p>You do not have permission to access this page.</p>
+                <a th:href="@{/}" class="btn btn-home btn-block">Go to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
